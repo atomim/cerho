@@ -6,7 +6,7 @@
 	"assets" : {
 	
 		"images" : [
-			"images/eka.png",
+			"images/respect.png",
 			"images/kredut.png"
 		],
 		
@@ -25,14 +25,15 @@
 			"shaders/black_metaballs.frag",
 			"shaders/colorful_metaballs.frag",
 			"shaders/varijutska.frag",
-			"shaders/brabo.frag"
+			"shaders/brabo.frag",
+			"shaders/noby.frag"
 		],
 		
 		"text" : []
 	},
 
     "textureslots" : {
-        "0" : "eka.png",
+        "0" : "respect.png",
 		"1" : "kredut.png"
     },
 	
@@ -72,12 +73,15 @@
 		"kredut" : {
 			"shader" : "kredut.frag",
 			"params" : {}
+		},
+		"noby" : {
+			"shader" : "noby.frag",
+			"params" : {}
 		}
 	},
 	
 	"playlist" : {
 		"entries" : [
-
 			{
 			"effect" : "kredut",
 			"begin" : 0.0,
@@ -88,9 +92,9 @@
 			},
 
 			{
-			"effect" : "brabo",
+			"effect" : "noby",
 			"begin" : 12.0,
-			"end" : 15.0,
+			"end" : 19.0,
 			"params" : {
 				"flash" : 0.2
 			}
@@ -98,24 +102,24 @@
 			
 			{
 			"effect" : "march1",
-			"begin" : 15.0,
-			"end" : 20.0,
+			"begin" : 19.0,
+			"end" : 30.0,
 			"params" : { 
 			}
 			},
 
 			{
 			"effect" : "glowingmetaballs",
-			"begin" : 20.0,
-			"end" : 125.0,
+			"begin" : 30.0,
+			"end" : 35.0,
 			"params" : { 
 			}
 			},
 
 			{
 			"effect" : "black_metaballs",
-			"begin" : 25.0,
-			"end" : 35.0,
+			"begin" : 35.0,
+			"end" : 45.0,
 			"params" : { 
 			}
 			},
