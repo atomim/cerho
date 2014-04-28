@@ -29,6 +29,8 @@ var Demo = (function($, assets, glul, utils) {
     var debugModeEnabled = false;
 	var debugState = {currentEntry : {}, currentEffect : {}};
     var keyListener; // uses the keypress.js library to handle keypresses
+	var width;
+	var height;
 
 	var getBasename = function (path) {
 		return path.split(/[\\/]/).pop();
@@ -244,11 +246,6 @@ var Demo = (function($, assets, glul, utils) {
 			mouse.buttons[e.which] = 0.0;
 		});
 
-        if (debugModeEnabled) {
-            keyListener = new window.keypress.Listener();
-            setupHotkeys(keyListener);
-        }
-
         load(demodata, setupAssets, success);
 	}
 
@@ -259,9 +256,20 @@ var Demo = (function($, assets, glul, utils) {
 	}
 
 	demo.update = function () {
+		width = viewwidth();
+		height = width * (9.0/16.0);
+
+		$('#viewport').attr("width", width);
+		$('#viewport').attr("height", height);
+		$('#viewport').get(0).style.left="0px";
+		$('#viewport').get(0).style.top=((window.innerHeight-height)/2)+"px";
+		gl.drawingBufferWidth=width;
+		gl.drawingBufferHeight=height;
+		gl.viewport(0, 0, width, height);
 		prof.begin("render");
 		demo.draw();
 		prof.end("render");
+
 		window.requestAnimationFrame(demo.update);
 		
 		if (debugModeEnabled)
@@ -312,7 +320,7 @@ var Demo = (function($, assets, glul, utils) {
 		var mouseLoc = gl.getUniformLocation(prog, "iMouse");
 		var localMouseLoc = gl.getUniformLocation(prog, "iLocalMouse");
         // TODO what's the third coordinate supposed to be?
-        gl.uniform3f(resLoc, gl.viewportWidth, gl.viewportHeight, 1.0);
+        gl.uniform3f(resLoc, width, height, 1.0);
 		gl.uniform4f(mouseLoc, mouse.pos.x, mouse.pos.y, mouse.buttons[1], mouse.buttons[1]);
         gl.uniform4f(localMouseLoc, mouse.pos.x / gl.viewportWidth, 1.0 - mouse.pos.y / gl.viewportHeight, mouse.buttons[1], mouse.buttons[3]);
     }

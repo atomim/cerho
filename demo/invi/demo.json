@@ -69,7 +69,7 @@
 			"shader" : "brabo.frag",
 			"params" : {}
 		},
-		"brabo" : {
+		"kredut" : {
 			"shader" : "kredut.frag",
 			"params" : {}
 		}
@@ -141,6 +141,15 @@
 			"effect" : "varijutska",
 			"begin" : 35.0,
 			"end" : 45.0,
+			"params" : {
+				"flash" : 0.2
+			}
+			},
+
+			{
+			"effect" : "kredut",
+			"begin" : 45.0,
+			"end" : 52.0,
 			"params" : {
 				"flash" : 0.2
 			}

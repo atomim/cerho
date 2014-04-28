@@ -1,19 +1,28 @@
-
 body {
     background-color: black;
     color:#fff;
     padding:0px;
     margin:0px;
+    overflow: hidden;
 }
-
+html:-moz-full-screen {
+    background: #000000;;
+}
+ 
+html:-webkit-full-screen {
+    background: #000000;;
+}
+ 
+html:fullscreen {
+    background: #000000;;
+}
 #viewport {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 50px;
     left: 0px;
     right: 0px;
     padding: 0px;
     display: block;
+    cursor: none;
+    position: fixed;
 }
 
 #debugview {

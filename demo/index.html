@@ -26,6 +26,10 @@
 	<li>BEATS: <span id="beats"></span></li>
 	<span id="instructions">SPACE: play/pause, R: reload shaders (doesn't work), Q: jump to beginning, ARROW KEYS: seek (hold shift for speed)</span>
 </ul>
+<div id="links">
+<a id="a$id" href="#" class="fullscreen" >fullscreen</a>
+<a id="b$id" href="#" class="windowed">windowed</a>
+</div>
 <canvas id="viewport">
 
 </canvas>
@@ -46,14 +50,6 @@ var initialize = function (demodata) {
 		demo.setDebugMode(true);
 	}
 
-	var width = viewwidth();
-	var height = width * (9.0/16.0);
-
-	$('#viewport').attr("width", width);
-	$('#viewport').attr("height", height);
-
-    console.log(width, height);
-
     demo.init(
             $('#viewport').get(0), 
 			"invi",
@@ -62,11 +58,43 @@ var initialize = function (demodata) {
                 demo.run(); 
             });
 }
+function runDemo(){
+	$( "#links" ).remove();
+	var width = viewwidth();
+	var height = width * (9.0/16.0);
 
-$.getJSON("invi/demo.json", null, function(data, status, jqXHR) {
-        initialize(data);
-        });
+	$('#viewport').attr("width", width);
+	$('#viewport').attr("height", height);
+	$('#viewport').get(0).style.left="0px";
+	$('#viewport').get(0).style.top=((window.innerHeight-height)/2)+"px";
 
+    console.log(width, height);
+	$.getJSON("invi/demo.json", null, function(data, status, jqXHR) {
+	        initialize(data);
+	        });
+}
+$("a.fullscreen").on('click', function() {
+    var docElement, request;
+
+    docElement = document.documentElement;
+    request = docElement.requestFullScreen || docElement.webkitRequestFullScreen || docElement.mozRequestFullScreen || docElement.msRequestFullScreen;
+
+    if(typeof request!="undefined" && request){
+        request.call(docElement);
+    }
+    runDemo();
+});
+$("a.windowed").on('click', function() {
+    var docElement, request;
+
+    docElement = document.documentElement;
+    request = docElement.cancelFullScreen|| docElement.webkitCancelFullScreen || docElement.mozCancelFullScreen || docElement.msCancelFullScreen || docElement.exitFullscreen;
+
+    if(typeof request!="undefined" && request){
+        request.call(docElement);
+    }
+    runDemo();
+});
 </script>
 </body>
 </html>
