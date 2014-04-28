@@ -79,9 +79,9 @@
 		"entries" : [
 
 			{
-			"effect" : "punainen",
+			"effect" : "kredut",
 			"begin" : 0.0,
-			"end" : 2.0,
+			"end" : 12.0,
 			"params" : { 
 				"testparam" : 1.0
 			}
@@ -89,8 +89,8 @@
 
 			{
 			"effect" : "brabo",
-			"begin" : 2.0,
-			"end" : 5.0,
+			"begin" : 12.0,
+			"end" : 15.0,
 			"params" : {
 				"flash" : 0.2
 			}
@@ -98,30 +98,22 @@
 			
 			{
 			"effect" : "march1",
-			"begin" : 5.0,
-			"end" : 10.0,
+			"begin" : 15.0,
+			"end" : 20.0,
 			"params" : { 
 			}
 			},
 
 			{
 			"effect" : "glowingmetaballs",
-			"begin" : 10.0,
-			"end" : 15.0,
+			"begin" : 20.0,
+			"end" : 125.0,
 			"params" : { 
 			}
 			},
 
 			{
 			"effect" : "black_metaballs",
-			"begin" : 15.0,
-			"end" : 25.0,
-			"params" : { 
-			}
-			},
-
-			{
-			"effect" : "colorful_metaballs",
 			"begin" : 25.0,
 			"end" : 35.0,
 			"params" : { 
@@ -129,9 +121,17 @@
 			},
 
 			{
-			"effect" : "sininen",
+			"effect" : "colorful_metaballs",
 			"begin" : 45.0,
-			"end" : 50.0,
+			"end" : 55.0,
+			"params" : { 
+			}
+			},
+
+			{
+			"effect" : "sininen",
+			"begin" : 55.0,
+			"end" : 60.0,
 			"params" : {
 				"flash" : 0.2
 			}
@@ -139,8 +139,8 @@
 
 			{
 			"effect" : "varijutska",
-			"begin" : 35.0,
-			"end" : 45.0,
+			"begin" : 60.0,
+			"end" : 65.0,
 			"params" : {
 				"flash" : 0.2
 			}
@@ -148,8 +148,8 @@
 
 			{
 			"effect" : "kredut",
-			"begin" : 45.0,
-			"end" : 52.0,
+			"begin" : 65.0,
+			"end" : 70.0,
 			"params" : {
 				"flash" : 0.2
 			}

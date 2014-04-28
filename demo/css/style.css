@@ -25,7 +25,6 @@ a:active {color:#333333;}  /* selected link */
     right: 0px;
     padding: 0px;
     display: block;
-    cursor: none;
     position: fixed;
 }
 

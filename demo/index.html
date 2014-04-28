@@ -67,7 +67,7 @@ function runDemo(){
 	$('#viewport').attr("height", height);
 	$('#viewport').get(0).style.left="0px";
 	$('#viewport').get(0).style.top=((window.innerHeight-height)/2)+"px";
-
+	$('#viewport').get(0).style.cursor="none";
     console.log(width, height);
 	$.getJSON("invi/demo.json", null, function(data, status, jqXHR) {
 	        initialize(data);
