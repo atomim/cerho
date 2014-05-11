@@ -6,7 +6,9 @@
 	"assets" : {
 	
 		"images" : [
-			"images/eka.png"
+			"images/eka.png",
+			"images/tekstit.png"
+			
 		],
 		
 		"vertexshader" : "shaders/shader.vert",
@@ -17,14 +19,16 @@
 		
 		"fragmentshaders" : [
 			"shaders/red.frag",
-			"shaders/march1.frag",
-			"shaders/blue.frag",
-			"shaders/glowingmetaballs.frag",
 			"shaders/black_metaballs.frag",
-			"shaders/colorful_metaballs.frag",
-			"shaders/varijutska.frag",
+			"shaders/blue.frag",
 			"shaders/brabo.frag",
+			"shaders/colorful_metaballs.frag",
+			"shaders/glowingmetaballs.frag",
 			"shaders/haro.frag",
+			"shaders/kredut.frag",
+			"shaders/march1.frag",
+			"shaders/noby.frag",
+			"shaders/varijutska.frag",
 			"shaders/wave.frag"
 		],
 		
@@ -32,7 +36,8 @@
 	},
 
     "textureslots" : {
-        "0" : "eka.png"
+        "0" : "eka.png",
+		"1" : "tekstit.png"
     },
 	
 	"effects" : {
@@ -75,6 +80,14 @@
 		"wave" : {
 			"shader" : "wave.frag",
 			"params" : {}
+		},
+		"kredut" : {
+			"shader" : "kredut.frag",
+			"params" : {}
+		},
+		"noby" : {
+			"shader" : "noby.frag",
+			"params" : {}
 		}
 	},
 	
@@ -82,9 +95,9 @@
 		"entries" : [
 
 			{
-			"effect" : "haro",
+			"effect" : "varijutska",
 			"begin" : 0.0,
-			"end" : 0.0,
+			"end" : 15.0,
 			"params" : { 
 				"testparam" : 1.0
 			}
@@ -92,58 +105,8 @@
 
 			{
 			"effect" : "wave",
-			"begin" : 0.0,
-			"end" : 15.0,
-			"params" : {
-				"flash" : 0.2
-			}
-			},
-			
-			{
-			"effect" : "march1",
 			"begin" : 15.0,
-			"end" : 10.0,
-			"params" : { 
-			}
-			},
-
-			{
-			"effect" : "glowingmetaballs",
-			"begin" : 10.0,
-			"end" : 15.0,
-			"params" : { 
-			}
-			},
-
-			{
-			"effect" : "black_metaballs",
-			"begin" : 15.0,
-			"end" : 27.0,
-			"params" : { 
-			}
-			},
-
-			{
-			"effect" : "colorful_metaballs",
-			"begin" : 27.0,
-			"end" : 35.0,
-			"params" : { 
-			}
-			},
-
-			{
-			"effect" : "sininen",
-			"begin" : 45.0,
-			"end" : 50.0,
-			"params" : {
-				"flash" : 0.2
-			}
-			},
-
-			{
-			"effect" : "varijutska",
-			"begin" : 35.0,
-			"end" : 45.0,
+			"end" : 18.0,
 			"params" : {
 				"flash" : 0.2
 			}
