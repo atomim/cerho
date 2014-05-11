@@ -171,8 +171,15 @@ var Demo = (function($, assets, glul, utils) {
 		console.log(playlist);
 
         transport = new Transport(assets.audio[data.assets.song.path], data.assets.song.bpm);
-
-        callback();
+		
+		/* Delay the demo start if not in debug mode. 
+           This is done to make sure the "SITE IS NOW FULLSCREEN" message
+		   disappears on time. */
+		if (debugModeEnabled) {
+			callback();
+		} else {
+			setTimeout(callback, 5000);
+		}
     }
 
     var setupHotkeys = function(listener) {
