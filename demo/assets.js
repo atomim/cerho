@@ -49,7 +49,7 @@ var Assets = (function ($){
 	}
 
 	obj.queueImage = function(relative_path) {
-		path = appendBasePath(relative_path);
+		var path = appendBasePath(relative_path);
 		var def = $.Deferred();
 
 		(function(url, deferred) {
@@ -81,7 +81,7 @@ var Assets = (function ($){
 	}
 
 	var queueAsset = function(relative_path, map) {
-		path = appendBasePath(relative_path);
+		var path = appendBasePath(relative_path);
 		var promise = $.get(path, null, function(data, status, jqXHR) {
 			map[relative_path] = data;
 			console.log("Loaded asset ", path);
@@ -91,7 +91,7 @@ var Assets = (function ($){
 	}
 
     obj.queueAudio = function(relative_path, statusCallback) {
-		path = appendBasePath(relative_path);
+		var path = appendBasePath(relative_path);
         var def = $.Deferred();
 
         (function (url, deferred) {
