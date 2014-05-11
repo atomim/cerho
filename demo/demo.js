@@ -309,8 +309,9 @@ var Demo = (function($, assets, glul, utils) {
 
                 var index = parseInt(binding_id);
 
+				var maxtextures = 8;
                 assert(index >= 0, "Texture index should be greater than zero");
-                assert(index < 4, "Texture index should be less than four");
+                assert(index < maxtextures, "Texture index should be less than " + maxtextures);
 
                 //console.log("activating texture ", index, texname, progname);
                 gl.activeTexture(gl.TEXTURE0 + index);
