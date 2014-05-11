@@ -311,9 +311,10 @@ var Demo = (function($, assets, glul, utils) {
 
     /* TODO add ShaderToy compatible uniforms here */
     var setCommonUniforms = function (entry, prog, beginTime) {
-        setFloatUniform(prog, "iGlobalTime", transport.getPos());
+        setFloatUniform(prog, "iGlobalTime", transport.getBeat());
+		setFloatUniform(prog, "iGlobalTimeSecs", transport.getPos());
 		
-        setFloatUniform(prog, "iLocalTime", transport.getPos()-beginTime);
+        setFloatUniform(prog, "iLocalTime", transport.getBeat()-beginTime);
         setFloatUniform(prog, "beat", transport.getBeat());
         
         var resLoc = gl.getUniformLocation(prog, "iResolution");
@@ -330,7 +331,8 @@ var Demo = (function($, assets, glul, utils) {
 		gl.clear(gl.COLOR_BUFFER_BIT);
 
         var time = transport.getPos();
-		var entry = playlist.getCurrent(time);
+		var beats = transport.getBeat();
+		var entry = playlist.getCurrent(beats);
 		debugState.currentEntry = entry;
 
 		
