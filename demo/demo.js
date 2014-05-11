@@ -198,6 +198,8 @@ var Demo = (function($, assets, glul, utils) {
         utils.mapmap(keyfuncs, function (combo, func, list) {
             listener.simple_combo(combo, func);
         });
+		
+		console.log("Hotkeys initialized: ", keyfuncs);
     }
 	
 	var setupDebugView = function(identifier) {
@@ -237,6 +239,8 @@ var Demo = (function($, assets, glul, utils) {
 		prof.begin("init");
 		if (debugModeEnabled) {
 			setupDebugView("#debugview");
+			keyListener = new window.keypress.Listener();
+            setupHotkeys(keyListener);
 		}
 		
 		gl = glul.initGL(viewportElement);
