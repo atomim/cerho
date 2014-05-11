@@ -16,6 +16,14 @@
 </head>
 
 <body>
+<div id="links">
+<a id="a$id" href="#" class="fullscreen" >fullscreen</a>
+<a id="b$id" href="#" class="windowed">windowed</a>
+</div>
+<canvas id="viewport">
+
+</canvas>
+
 <ul id="debugview" style="display:none;">
 	<li><span id="current_entry"></span></li>
 	<li><span id="current_effect"></span></li>
@@ -26,13 +34,6 @@
 	<li>BEATS: <span id="beats"></span></li>
 	<span id="instructions">SPACE: play/pause, R: reload shaders (doesn't work), Q: jump to beginning, ARROW KEYS: seek (hold shift for speed)</span>
 </ul>
-<div id="links">
-<a id="a$id" href="#" class="fullscreen" >fullscreen</a>
-<a id="b$id" href="#" class="windowed">windowed</a>
-</div>
-<canvas id="viewport">
-
-</canvas>
 <script>
 function viewwidth(){
    return window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth||0;
