@@ -127,7 +127,7 @@ var Assets = (function ($){
                 }
 
                 obj.audio[relative_path] = track;
-                setTimeout(track._statusUpdater, 500);
+                setTimeout(track._statusUpdater, 1000);
             };
 
             track._statusUpdater(track);

@@ -2,6 +2,7 @@
 void main( void )
 {
 	float t=iGlobalTime*1.5; //lyhennysmerkintä
+
 	vec2 coords = gl_FragCoord.xy / iResolution.xy;
 	coords.y=1.0-coords.y;
 	vec2 uv = coords;
@@ -18,5 +19,7 @@ void main( void )
 	summa = summa/3.0;
 	vec4 vari = vec4( color_r*0.0+summa,color_g+summa,color_b+summa,0.0);
 	vari = vari*sin(pos.y*.01+t);
-	gl_FragColor = vari*texture2D(iChannel1, uv);
+	vec3 col = texture2D(iChannel1, vec2(coords.x,floor(iGlobalTime*0.5)*0.08+max(min(-0.25+0.1*mod(-iGlobalTime*0.5,1.0)+coords.y*(iResolution.y/iResolution.x),0.08),0.0))).rgb*0.5*(1.+mod(gl_FragCoord.y,2.0));
+ 	vari=max(vari/2.,vec4(2.0-pow(col.r+0.5,50.0)-0.50));
+	gl_FragColor = vari;
 }

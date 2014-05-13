@@ -7,7 +7,11 @@
 	
 		"images" : [
 			"images/eka.png",
-			"images/tekstit.png"
+			"images/tekstit.png",
+			"images/kredut.png",
+			"images/disp.jpg",
+			"images/greets.png",
+			"images/queens.png"
 			
 		],
 		
@@ -27,9 +31,13 @@
 			"shaders/haro.frag",
 			"shaders/kredut.frag",
 			"shaders/march1.frag",
-			"shaders/noby.frag",
 			"shaders/varijutska.frag",
-			"shaders/wave.frag"
+			"shaders/wave.frag",
+			"shaders/outopallot.frag",
+			"shaders/noby.frag",
+			"shaders/cce.frag",
+			"shaders/rayspheres.frag",
+			"shaders/disain.frag"
 		],
 		
 		"text" : []
@@ -37,7 +45,11 @@
 
     "textureslots" : {
         "0" : "eka.png",
-		"1" : "tekstit.png"
+		"1" : "tekstit.png",
+		"2" : "kredut.png",
+		"3" : "disp.jpg",
+		"4" : "greets.png",
+		"5" : "queens.png"
     },
 	
 	"effects" : {
@@ -88,6 +100,18 @@
 		"noby" : {
 			"shader" : "noby.frag",
 			"params" : {}
+		},
+		"cce" : {
+			"shader" : "cce.frag",
+			"params" : {}
+		},
+		"rayspheres" : {
+			"shader" : "rayspheres.frag",
+			"params" : {}
+		},
+		"disain" : {
+			"shader" : "disain.frag",
+			"params" : {}
 		}
 	},
 	
@@ -97,20 +121,74 @@
 			{
 			"effect" : "varijutska",
 			"begin" : 0.0,
-			"end" : 15.0,
+			"end" : 16.0,
 			"params" : { 
-				"testparam" : 1.0
 			}
 			},
-
 			{
 			"effect" : "wave",
-			"begin" : 15.0,
-			"end" : 18.0,
-			"params" : {
-				"flash" : 0.2
+			"begin" : 16.0,
+			"end" : 32.0,
+			"params" : { 
+			}
+			},
+			{
+			"effect" : "haro",
+			"begin" : 32.0,
+			"end" : 46.0,
+			"params" : { 
+			}
+			},
+			{
+			"effect" : "glowingmetaballs",
+			"begin" : 46.0,
+			"end" : 48.0,
+			"params" : { 
+			}
+			},
+			{
+			"effect" : "kredut",
+			"begin" : 48.0,
+			"end" : 63.0,
+			"params" : { 
+			}
+			},
+			{
+			"effect" : "colorful_metaballs",
+			"begin" : 63.0,
+			"end" : 70.0,
+			"params" : { 
+			}
+			},
+			{
+			"effect" : "rayspheres",
+			"begin" : 70.0,
+			"end" : 79.0,
+			"params" : { 
+			}
+			},
+			{
+			"effect" : "noby",
+			"begin" : 79.0,
+			"end" : 96.0,
+			"params" : { 
+			}
+			},
+			{
+			"effect" : "march1",
+			"begin" : 96.0,
+			"end" : 128.0,
+			"params" : { 
+			}
+			},
+			{
+			"effect" : "cce",
+			"begin" : 128.0,
+			"end" : 160.0,
+			"params" : { 
 			}
 			}
+
 		]
 	}
 }

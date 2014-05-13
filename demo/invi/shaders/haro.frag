@@ -24,12 +24,12 @@ void main(void)
 	
 	float vaaristus = 0.02*sin(colour.r*colour.g*((t*ballDistance*0.001)+(t*ballDistance*i*0.05))*0.03);
 	//colors += vec3(sin(ballDistance*t*0.03)+ballPos.x*0.1*i*0.01,0.5*cos(colour.r*t*0.01)*0.1+sin(ballDistance*t*0.03+0.1)+ballPos.x*0.1*i*0.01,vaaristus);
-		if(ballDistance+centerDistance> 0.5*i*0.0001){
-	colors += vec3(sin(vaaristus*t*0.03)+ballPos.x*0.1*i*0.01,cos(t*0.01)+sin(vaaristus*t*0.1*i*0.1)-1.0,sin(vaaristus*t*0.1));
-		}
-		   else{
-	colors -= vec3(colour.b,colour.b,colour.b);
-		   }
+	if(mod(iGlobalTime,1.0)<0.5){
+		colors += vec3(sin(vaaristus*t*0.03)+ballPos.x*0.1*i*0.01,cos(t*0.01)+sin(vaaristus*t*0.1*i*0.1)-1.0,sin(vaaristus*t*0.1));
+	}
+ 	else{
+		colors -= vec3(colour.b,colour.b,colour.b);
+	}
 		//colors *= vec3((uv*i*0.000001),i*0.1);
 	}
 	
