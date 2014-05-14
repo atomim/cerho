@@ -43,9 +43,9 @@ void main(void){
 	vec4 color=vec4(vec3(0.0),1.0);
 	coord-=vec2(0.5);
 	if(coord.x<1.0 && coord.x>0.0 && coord.y<1.0 && coord.y>0.0)
-		color = texture2D(iChannel2,coord);
+		color = texture2D(iChannel7,coord);
 	else
-		color = texture2D(iChannel2,vec2(0.))/2.0;
+		color = texture2D(iChannel7,vec2(0.))/2.0;
 	color+=rasternoise(uv)*0.09;
 	if(mod(gl_FragCoord.y+gl_FragCoord.x,4.0)<1.0)
 		color/=1.1;

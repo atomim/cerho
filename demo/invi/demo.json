@@ -11,7 +11,8 @@
 			"images/kredut.png",
 			"images/disp.jpg",
 			"images/greets.png",
-			"images/queens.png"
+			"images/queens.png",
+			"images/logo3.png"
 			
 		],
 		
@@ -38,7 +39,8 @@
 			"shaders/cce.frag",
 			"shaders/rayspheres.frag",
 			"shaders/disain.frag",
-			"shaders/greetings.frag"
+			"shaders/greetings.frag",
+			"shaders/banner.frag"
 		],
 		
 		"text" : []
@@ -51,7 +53,8 @@
 		"3" : "disp.jpg",
 		"4" : "greets.png",
 		"5" : "queens.png",
-		"6" : "greets.png"
+		"6" : "greets.png",
+		"7" : "logo3.png"
     },
 	
 	"effects" : {
@@ -118,7 +121,12 @@
 		"greetings" : {
 			"shader" : "greetings.frag",
 			"params" : {}
+		},
+		"banner" : {
+			"shader" : "banner.frag",
+			"params" : {}
 		}
+
 
 	},
 	
@@ -212,6 +220,13 @@
 			{
 			"effect" : "brabo",
 			"begin" : 224.0,
+			"end" : 241.0,
+			"params" : { 
+			}
+			},
+			{
+			"effect" : "banner",
+			"begin" : 241.0,
 			"end" : 260.0,
 			"params" : { 
 			}

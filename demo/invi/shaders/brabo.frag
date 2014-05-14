@@ -125,5 +125,6 @@ void main(void)
 	}
 	if(mod(gl_FragCoord.y,2.0)<1.0)   /////////////////////////
 	lopullinentulos.xyz=lopullinentulos.xyz/1.3;
+	lopullinentulos.xyz=lopullinentulos.xyz/(1.+max((iGlobalTime-238.6)*25.,0.));
 	gl_FragColor = lopullinentulos;
 }
