@@ -82,8 +82,8 @@ void main(void)
 	for(float i=0.0; i<3.141*2.0; i+=3.141*0.2){
 		float aikakerroin=iLocalTime*0.6;
 		vec2 A=vec2(0.0,0.0);
-		vec2 B=vec2(cos(aikakerroin+i), sin(aikakerroin+i));
-		vec2 C=vec2(cos(aikakerroin+i-3.141*0.1), sin(aikakerroin+i-3.141*0.1));
+		vec2 B=vec2(cos(aikakerroin+i)*floor(1.+mod(iGlobalTime,2.0)), sin(aikakerroin+i)*floor(1.+mod(iGlobalTime,2.0)));
+		vec2 C=vec2(cos(aikakerroin+i-3.141*0.1)*floor(1.+mod(iGlobalTime,2.0)), sin(aikakerroin+i-3.141*0.1)*floor(1.+mod(iGlobalTime,2.0)));
 		if(mod(coord.x+coord.y,0.2)>0.1)
 		if(PointInTriangle(coord, A, B, C)==1)
 			tulos.xyz=vec3(1.0,222.0/512.0, 64.0/255.0);

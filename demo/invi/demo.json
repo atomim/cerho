@@ -154,7 +154,7 @@
 			}
 			},
 			{
-			"effect" : "kredut",
+			"effect" : "noby",
 			"begin" : 48.0,
 			"end" : 63.0,
 			"params" : { 
@@ -175,7 +175,7 @@
 			}
 			},
 			{
-			"effect" : "noby",
+			"effect" : "kredut",
 			"begin" : 79.0,
 			"end" : 96.0,
 			"params" : { 
