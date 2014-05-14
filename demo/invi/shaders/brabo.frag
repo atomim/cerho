@@ -49,11 +49,11 @@ int PointInTriangle(vec2 pt, polygon X){
 
 void main(void)
 {
-	float vasenKulmakarva=floor(mod(iLocalTime*0.8,2.0))*0.1;
-	float oikeaKulmakarva=floor(mod(iLocalTime*0.3,2.0))*0.1;
-	float vasenSilma=min(max(0.24*sin(iLocalTime),0.006),0.06);
-	float oikeaSilma=min(max(0.24*sin(iLocalTime),0.006),0.06);
-	float suu=iLocalTime*10.0;
+	float vasenKulmakarva=(min(iLocalTime*0.3,2.0))*0.1;
+	float oikeaKulmakarva=(min(iLocalTime*0.3,2.0))*0.1;
+	float vasenSilma=min(max(0.24*min(iLocalTime*0.3,1.0),0.006),0.06);
+	float oikeaSilma=min(max(0.24*min(iLocalTime*0.3,1.0),0.006),0.06);
+	float suu=min(iLocalTime*0.3,1.0)*10.0;
 	vec4 tulos;
 	vec4 lopullinentulos=vec4(1.0);
 	vec2 uv = gl_FragCoord.xy / iResolution.xy;
@@ -62,8 +62,8 @@ void main(void)
 	for(float rgbare=0.0; rgbare<2.0; rgbare++){
 	vec2 coord = vec2(aspectCorrection,1.0) *coordinate_entered;
 	coord.x*=1.0+rgbare*0.009;
-	coord*=1.0+rand(coord+iLocalTime)/(pow(iLocalTime,7.0)*3.0)-length(coord)*10.0/(pow(iLocalTime*1.1,24.0));
-	coord*=1.0+0.1*sin(iLocalTime*0.1);
+	coord*=1.0+rand(coord+(iLocalTime+0.45))/(pow((iLocalTime+0.45),7.0)*3.0)-length(coord)*10.0/(pow((iLocalTime+0.45)*1.1,24.0));
+	coord*=1.0+0.1*sin((iLocalTime+0.45)*0.1);
 	tulos=vec4(vec3(200.0/255.0, 10.0/255.0, 65.0/255.0),1.0);
 	if(mod(coord.x+coord.y,0.2)>0.1){
 		if(sun(coord,vec2(0.0),0.7)==1.0)

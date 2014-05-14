@@ -120,7 +120,8 @@ var Assets = (function ($){
                         statusCallback(bufferedLength, track.duration);
                     }
 
-                    if (track.duration - bufferedLength - 0.01 <= 0.0) {
+                    if (track.duration*0.5 - bufferedLength - 0.01 <= 0.0) {
+
                         track.onload();
                         return;
                     }
