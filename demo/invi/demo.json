@@ -205,55 +205,6 @@
 			{
 			"effect" : "varijutska",
 			"begin" : 192.0,
-			"end" : 196.0,
-			"params" : { 
-			}
-			},
-			{
-			"effect" : "haro",
-			"begin" : 196.0,
-			"end" : 200.0,
-			"params" : { 
-			}
-			},
-			{
-			"effect" : "colorful_metaballs",
-			"begin" : 200.0,
-			"end" : 204.0,
-			"params" : { 
-			}
-			},
-			{
-			"effect" : "cce",
-			"begin" : 204.0,
-			"end" : 208.0,
-			"params" : { 
-			}
-			},
-			{
-			"effect" : "noby",
-			"begin" : 208.0,
-			"end" : 212.0,
-			"params" : { 
-			}
-			},
-			{
-			"effect" : "rayspheres",
-			"begin" : 212.0,
-			"end" : 216.0,
-			"params" : { 
-			}
-			},
-			{
-			"effect" : "black_metaballs",
-			"begin" : 216.0,
-			"end" : 220.0,
-			"params" : { 
-			}
-			},
-			{
-			"effect" : "black_metaballs",
-			"begin" : 220.0,
 			"end" : 224.0,
 			"params" : { 
 			}
