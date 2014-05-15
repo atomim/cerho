@@ -12,8 +12,8 @@
 			"images/disp.jpg",
 			"images/greets.png",
 			"images/queens.png",
-			"images/logo3.png"
-			
+			"images/logo3.png",
+			"images/tex05.jpg"
 		],
 		
 		"vertexshader" : "shaders/shader.vert",
@@ -40,7 +40,8 @@
 			"shaders/rayspheres.frag",
 			"shaders/disain.frag",
 			"shaders/greetings.frag",
-			"shaders/banner.frag"
+			"shaders/banner.frag",
+			"shaders/firebug.frag"
 		],
 		
 		"text" : []
@@ -54,7 +55,7 @@
 		"4" : "greets.png",
 		"5" : "queens.png",
 		"6" : "greets.png",
-		"7" : "logo3.png"
+		"7" : "tex05.jpg"
     },
 	
 	"effects" : {
@@ -125,12 +126,13 @@
 		"banner" : {
 			"shader" : "banner.frag",
 			"params" : {}
+		},
+		"firebug" : {
+		  "shader" : "firebug.frag",
+		  "params" : {}
 		}
-
-
-	},
 	
-	"playlist" : {
+	}, "playlist" : {
 		"entries" : [
 
 			{
@@ -211,7 +213,7 @@
 			}
 			},
 			{
-			"effect" : "varijutska",
+			"effect" : "firebug",
 			"begin" : 192.0,
 			"end" : 224.0,
 			"params" : { 
@@ -231,8 +233,6 @@
 			"params" : { 
 			}
 			}
-
-
 		]
 	}
 }
