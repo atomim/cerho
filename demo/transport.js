@@ -2,7 +2,7 @@ function Transport(song, bpm) {
     this.song = song;
     this.playstart = Utils.getNow() / 1000.0;
     this.playing = false;
-	this.offset = 0.020;
+	this.offset = -0.0;
     this.pos = 0.0;
     this.bpm = bpm || 120;
 	var hits_per_beat = 4.0;

@@ -23,6 +23,32 @@
 			        );
 		}
 
+vec3 ccc= vec3(0.4,0.4,0.4);
+vec2 Distort(vec2 p){
+    float theta  = atan(p.y, p.x);
+    float radius = length(p);
+    radius = pow(radius, 1.05);
+    p.x = radius * cos(theta);
+    p.y = radius * sin(theta);
+    ccc.r=0.5 * (p.y + 1.0);
+    ccc.b=radius;
+    return (p + 1.0);
+}
+vec4 image(void){
+	vec2 uv = gl_FragCoord.xy / iResolution.xy;
+	float aspectCorrection = (iResolution.x/iResolution.y);
+	vec2 coordinate_entered = 2.0 * uv - 1.0;
+	vec2 coord = vec2(aspectCorrection,1.0) *coordinate_entered;
+	coord*=0.52*0.9*(1.-(mod((iGlobalTime-0.5)*2.0,2.0))*0.1);
+	coord.x*=0.9;
+	coord.y*=-1.;
+	coord=Distort(coord);
+	vec4 color=vec4(vec3(0.0),1.0);
+	coord-=vec2(0.5);
+	if(coord.x<1.0 && coord.x>0.0 && coord.y<1.0 && coord.y>0.0)
+		return vec4(1.0)-texture2D(iChannel6,coord);
+	return vec4(0.);
+}
 		vec3 noise(in vec2 c)
 		{
 		return vec3(fract(sin(dot(c.xy, vec2(12.9898,78.233))) * 43758.5453));
@@ -139,7 +165,7 @@
 		float vignette = 1.4 / (1.25 + 0.5*dot(p, p));
 		float flicker = 0.99 + 0.02*smoothstep(0.0, 0.25, sin(2500.0*iGlobalTime*0.2));
 		float valahdys=max(tan(iGlobalTime*3.141),0.)*0.1;
-		gl_FragColor = vec4( 0.02*noise(p*iGlobalTime*0.2)+f*flicker*vignette+valahdys, 1.0);
+		gl_FragColor = vec4( 0.02*noise(p*iGlobalTime*0.2)+f*flicker*vignette+valahdys, 1.0)-image()*0.1;
 		}
 		
 	

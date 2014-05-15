@@ -6,13 +6,14 @@
 	"assets" : {
 	
 		"images" : [
-			"images/eka.png",
 			"images/tekstit.png",
 			"images/kreditsgreets.png",
 			"images/disp.jpg",
 			"images/queens.png",
 			"images/logo3.png",
-			"images/tex05.jpg"
+			"images/tex05.jpg",
+			"images/poplabel.png",
+			"images/arrows.png"
 		],
 		
 		"vertexshader" : "shaders/shader.vert",
@@ -51,9 +52,9 @@
 		"1" : "tekstit.png",
 		"2" : "kreditsgreets.png",
 		"3" : "disp.jpg",
-		"4" : "greets.png",
+		"4" : "poplabel.png",
 		"5" : "queens.png",
-		"6" : "greets.png",
+		"6" : "arrows.png",
 		"7" : "tex05.jpg"
     },
 	
