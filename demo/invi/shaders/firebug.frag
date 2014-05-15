@@ -74,11 +74,14 @@ void main(void)
     vec2 p = -1.0 + 2.0 * q;
     p.x *= iResolution.x/iResolution.y;
 
+    float fade=max(iGlobalTime-222.,0.)*12.+1.;
+    float liukkari=(iGlobalTime+0.05)*0.5;
+    float kameraPompottelu=(hash(floor(liukkari)).x);
     // ray origin etc.
     vec3 ro = vec3(10., 10., 0.);
-    ro = vec3(-10.*cos(iGlobalTime), 5.*sin(iGlobalTime), -5.);
+    ro = vec3(-10.*cos(iGlobalTime*3.141*0.25*kameraPompottelu)*floor(fade), 5.*sin(iGlobalTime*3.141*0.25)*floor(fade), -5.);
     
-    vec3 ta = vec3(0.0,0.0,0.);
+    vec3 ta = vec3(0.,0.,0.);
     //ta.z += iGlobalTime;
 	//
     vec3 ww = normalize( ta - ro );
@@ -114,7 +117,7 @@ void main(void)
 			col += shade(pos, tmp, h);//vec3(smoothstep(0., 0.5, tmp.z)*(1.-smoothstep(0.5, 1., tmp.z)));
         //col += vec3(step(0.1, tmp.y)*(1.-step(0.2, tmp.y)));
     }
-   
+    col *=0.8+max(mod(iGlobalTime*4.-1.75,16.)-14.,0.)*1.8;
 
     gl_FragColor = vec4( col, 1.0 );
 }

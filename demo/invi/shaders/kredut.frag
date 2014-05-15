@@ -1,7 +1,3 @@
-
-uniform float flash;
-uniform float beat;
-
 void main() { 
 	float time = iGlobalTime;
 	vec2 coords = gl_FragCoord.xy / iResolution.xy;
@@ -11,7 +7,7 @@ void main() {
 	vec2 m=uv-vec2(0.5);
 	vec4 c=vec4(0.0);
 	float fade=max(iGlobalTime-79.,0.)*0.08+max(iGlobalTime-95.,0.)*0.3;
-	float ajoitus=max(pow(iGlobalTime-79.,1.25)*0.01,0.0);
+	float ajoitus=max(pow(iGlobalTime-79.,1.298)*0.01,0.0);
 	m*=1.0-fade*0.1;
 	for(float i=0.; i<1.0; i+=0.03){
 		if(mod(length(m)-(iGlobalTime*ajoitus-i*0.077)*0.25,.3)<0.012 && mod(iGlobalTime*0.3*ajoitus+atan(m.x,m.y),3.74/10.0)>-3.14/60.0+3.14/20.0)
@@ -29,11 +25,13 @@ void main() {
 	uv*=0.8;
 	uv=vec2(max(min(uv.x,1.0),0.0),max(min(uv.y,1.0),0.0));
 	vec3 col=vec3(4.6+0.25*sin((uv.x*10.0+iGlobalTime)*3.141)+0.25*sin((uv.x*7.0+iGlobalTime*0.2)*3.141));
-	col.b+=0.1;
-	if(uv.y<0.11 && iGlobalTime<93.)
-		col *= vec3(1.0)-texture2D(iChannel2, vec2(uv.x,mod(uv.y,0.11))).rgb;
-	else if(uv.y*0.5>0.15 && uv.y*0.5<0.25 && iGlobalTime<94.)
-		col *= vec3(1.0)-texture2D(iChannel2, vec2(uv.x*0.5-mod((iGlobalTime+1.5)*0.5/32.0,1.0/32.0),0.119+mod(uv.y*0.5,0.14)+floor((iGlobalTime+.5)*0.5)*0.1)).rgb;
+	col.b+=0.1; 
+	uv*=.5;
+	vec2 magic=uv*0.5;
+	if(uv.y<0.052 && iGlobalTime<93. && uv.x>0. && uv.x<.5)
+		col *= vec3(1.0)-texture2D(iChannel2, vec2(min(max(uv.x,0.),.5),uv.y)).rgb;
+	else if(magic.y>0.052 && magic.y<0.104 && iGlobalTime<93. && magic.x>0. && magic.x<.5)
+		col *= vec3(1.0)-texture2D(iChannel2, vec2(min(max(magic.x,0.),.5),0.052/2.+magic.y+floor((iGlobalTime-3.)*.5)*0.052)).rgb;
 	else
 		col *= vec3(0.0);
 		col+=c.rgb;

@@ -65,12 +65,13 @@ void main(void)
 	coord*=0.005+0.05/mod((time)*1.,1.0);
 	coord*=rotate(time*3.141*1.);
 	vec4 o=vec4(vec3(0.),1.);
-	if(coord.x>-.5 && coord.x<.5 && coord.y>-(38./1024.) && coord.y<(38./1024.)){
+	if(coord.x>-.25 && coord.x<.25 && coord.y>-(38./1024.) && coord.y<(38./1024.)){
 		coord.y=1.-coord.y;
 		coord.x-=0.5;
 		coord.y-=0.5;
 		coord.y+=floor(time)*(64./1024.)+(64./2048.);
-		o=texture2D(iChannel6,coord)/(1.+0.5*mod(gl_FragCoord.y+gl_FragCoord.x,2.0));
+		coord=coord+vec2(.25,0.);
+		o=texture2D(iChannel2,coord)/(1.+0.5*mod(gl_FragCoord.y+gl_FragCoord.x,2.0));
 	}
 	o+=vec4(tan((-0.5+iGlobalTime)*3.141)*0.4);
 	o+=vec4(max(-191.5+iGlobalTime,0.)*2.);
