@@ -56,7 +56,7 @@ vec3 shade( in vec3 pos, in vec4 res, in vec3 hash )
     coords.y += coords.x*coords.x*(1.-efsel);
     //coords.y += mod(coords.y, 40.0)*efsel;
     // Moving "blob"
-    float bb = spulse(mod(beat, 8.), 0., 4., 4.0, 8.0);
+    float bb = spulse(mod(beat, 4.), 0., 4., 4.0, 8.0);
     //return vec3(bb);
     float b = spulse(abs(abs(coords.x)-bb*100.), 0., 2., 3., 5.);
     float collen = clamp(0., 1., coords.y);
@@ -90,9 +90,12 @@ void main(void)
     vec3 kameraPompottelu= hash(floor(liukkari));
     // ray origin etc.
     vec3 ro = vec3(10., 10., 0.);
-    ro = vec3(-10.*cos(iGlobalTime*3.141*0.25*kameraPompottelu.x)*floor(fade), 5.*sin(kameraPompottelu.y*iGlobalTime*3.141*0.23)*floor(fade), -5.);
+    //float faster = efsel*(iGlobalTime-205.)*0.5;
+    ro = vec3(-10.*cos(iGlobalTime*3.141*0.25*kameraPompottelu.x)*floor(fade), 
+              5.*sin(kameraPompottelu.y*iGlobalTime*3.141*0.23)*floor(fade), 
+              -6./*+6.*sin(faster*0.12)*/);
     
-    vec3 ta = vec3(0.);
+    vec3 ta = vec3(0., 0., 0.);
     //ta.z += iGlobalTime;
 	//
     vec3 ww = normalize( ta - ro );
@@ -129,7 +132,7 @@ void main(void)
         //col += vec3(step(0.1, tmp.y)*(1.-step(0.2, tmp.y)));
     }
     float tmod = mod(beat, 4.);
-    col *=0.8+spulse(tmod, 0., 0.2, .5, .7)*1.8;
+    col *=0.8+spulse(tmod, 0., 0.2, .3, .5)*1.8;
 
     gl_FragColor = vec4( col, 1.0 );
 }
