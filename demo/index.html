@@ -44,6 +44,8 @@ function viewheight(){
 }
 
 function getQueryParams(qs) {
+	if (qs == undefined)
+		return {};
   qs = qs.split("+").join(" ");
 
   var params = {}, tokens,
