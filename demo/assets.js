@@ -82,10 +82,13 @@ var Assets = (function ($){
 
 	var queueAsset = function(relative_path, map) {
 		var path = appendBasePath(relative_path);
-		var promise = $.get(path, null, function(data, status, jqXHR) {
-			map[relative_path] = data;
-			console.log("Loaded asset ", path);
-		}); 
+		var promise = $.ajax(path, {
+      cache: false,
+      success: function(data, status, jqXHR) {
+        map[relative_path] = data;
+        console.log("Loaded asset ", path);
+      }
+    });
 
 		promises.push(promise);
 	}
