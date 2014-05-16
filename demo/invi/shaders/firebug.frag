@@ -42,6 +42,11 @@ vec3 hash( in float x )
 }
 
 
+
+float spulse(float val, float s1, float s2, float e1, float e2) {
+    return smoothstep(s1, s2, val)*(1.-smoothstep(e1, e2, val));
+}
+
 vec3 shade( in vec3 pos, in vec4 res, in vec3 hash )
 {
     vec3 col = vec3(1., res.z, 0.1);
@@ -51,14 +56,16 @@ vec3 shade( in vec3 pos, in vec4 res, in vec3 hash )
     coords.y += coords.x*coords.x*(1.-efsel);
     //coords.y += mod(coords.y, 40.0)*efsel;
     // Moving "blob"
-    float b = 1.-smoothstep(1., 3., abs(coords.x-mod(beat/4., 4.)*50.));
+    float bb = spulse(mod(beat, 8.), 0., 4., 4.0, 8.0);
+    //return vec3(bb);
+    float b = spulse(abs(abs(coords.x)-bb*100.), 0., 2., 3., 5.);
     float collen = clamp(0., 1., coords.y);
     //col = mix(vec3(1., 0.4, 1.), vec3(0., 1., 0.4), coords.y.z-hash.z);
     col = texture2D(iChannel7, vec2(coords.x, coords.y-hash.z)*0.4).xyz;
     col = mix(vec3(1., 0.5, 0.), vec3(0., 0., 1.), col);
     //col += mix(vec3(1.), col, smoothstep(0., 1., blobAm));//1.-vec3(smoothstep(0., 6.5, blobAm));
     col *= 1.-smoothstep(.4, 2.9, abs(coords.y));
-    col += vec3(0., 0.5, 1.)*b*(smoothstep(1.0, 3.2, coords.y)*(1.-smoothstep(3.2, 3.9, coords.y)));
+    col += 0.1*vec3(0., 0.5, 1.)*b;//*(smoothstep(1.0, 3.2, coords.y)*(1.-smoothstep(3.2, 3.9, coords.y)));
     
     return col*0.2;
 }
@@ -69,10 +76,6 @@ vec3 rotateZ(vec3 v, float a)
    float co = cos(a);
    float si = sin(a);
    return vec3(co*v.x + si*v.y, -si*v.x + co*v.y, v.z); 
-}
-
-float spulse(float val, float s1, float s2, float e1, float e2) {
-    return smoothstep(s1, s2, val)*(1.-smoothstep(e1, e2, val));
 }
 
 void main(void)
