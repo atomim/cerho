@@ -26,16 +26,16 @@ void main() {
 	uv=vec2(max(min(uv.x,1.0),0.0),max(min(uv.y,1.0),0.0));
 	vec3 col=vec3(4.6+0.25*sin((uv.x*10.0+iGlobalTime)*3.141)+0.25*sin((uv.x*7.0+iGlobalTime*0.2)*3.141));
 	col.b+=0.1; 
-	uv*=.5;
+	uv.y*=.5;
 	vec2 magic=uv*0.5;
-	if(uv.y<0.052 && iGlobalTime<93. && uv.x>0. && uv.x<.5)
+	if(uv.y<(64./1024.) && iGlobalTime<95. && uv.x>0. && uv.x<.498)
 		col *= vec3(1.0)-texture2D(iChannel2, vec2(min(max(uv.x,0.),.5),uv.y)).rgb;
-	else if(magic.y>0.052 && magic.y<0.104 && iGlobalTime<93. && magic.x>0. && magic.x<.5)
-		col *= vec3(1.0)-texture2D(iChannel2, vec2(min(max(magic.x,0.),.5),0.052/2.+magic.y+floor((iGlobalTime-3.)*.5)*0.052)).rgb;
+	else if(magic.y>(60./1024.)*2. && magic.y<(65./1024.)*3. && iGlobalTime<95. && magic.x>0. && magic.x<.47)
+		col *= vec3(1.0)-texture2D(iChannel2, vec2(min(max(magic.x,0.),.5),(64./512.)+magic.y+floor((iGlobalTime-21.)*.5)*(64./1024.))).rgb;
 	else
 		col *= vec3(0.0);
 		col+=c.rgb;
 	//col = vec3(pow(col.r+0.5,50.0)-0.50);
 	float valahdys=max(tan(iGlobalTime*3.141),0.)*0.1;
-	gl_FragColor = vec4(vec3(1.0)-col+vec3(valahdys+tan(fade)), 1.0);
+	gl_FragColor = (0.82+0.18*mod(gl_FragCoord.y+gl_FragCoord.x,2.0))*vec4(vec3(1.0)-col+vec3(valahdys+tan(fade)), 1.0);
 }

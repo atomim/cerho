@@ -76,7 +76,7 @@ void main(void)
 	v*=.5;
 	v+=0.5;
 	vec4 overlay=vec4(0.,0.,0.,1.);
-	if(u>-1. && u<-0. && v>-1. && v<2.)
+	if(u>-1. && u<-0.01 && v>-1. && v<2.)
 		overlay=texture2D(iChannel5,vec2(u,v));
 	gl_FragColor = vec4(0.7, intensity*10.0, 0.0, 1.0)+vec4(0.1)+overlay*0.4;
 	
