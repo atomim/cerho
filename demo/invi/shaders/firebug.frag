@@ -1,5 +1,7 @@
 uniform float beat;
 
+float efsel = smoothstep(205., 210., beat);
+
 // demokerho 30.3. shader testing
 // thanks to iq for coordinate intersection code
 #if 0
@@ -45,9 +47,11 @@ vec3 shade( in vec3 pos, in vec4 res, in vec3 hash )
     vec3 col = vec3(1., res.z, 0.1);
     vec2 coords = res.yz;
     //return vec3(clamp(vec2(0.), vec2(1.), coords/4.), 0.);
-    coords.y -= hash.z*3. - cos(iGlobalTime*hash.x*4.)+ sin(res.y+hash.x*3.+iGlobalTime)+sin(iGlobalTime*0.3)*sin(res.x);
+    coords.y -= hash.z*3. - cos(iGlobalTime*hash.x*4.)+ sin(res.y+hash.x*4.+iGlobalTime)+sin(iGlobalTime*0.3)*sin(res.x);
+    coords.y += coords.x*coords.x*(1.-efsel);
+    //coords.y += mod(coords.y, 40.0)*efsel;
     // Moving "blob"
-    float b = 1.-smoothstep(1., 3., abs(coords.x-(mod(iGlobalTime, 2.) - 1.)*100.));
+    float b = 1.-smoothstep(1., 3., abs(coords.x-mod(beat/4., 4.)*50.));
     float collen = clamp(0., 1., coords.y);
     //col = mix(vec3(1., 0.4, 1.), vec3(0., 1., 0.4), coords.y.z-hash.z);
     col = texture2D(iChannel7, vec2(coords.x, coords.y-hash.z)*0.4).xyz;
@@ -65,6 +69,10 @@ vec3 rotateZ(vec3 v, float a)
    float co = cos(a);
    float si = sin(a);
    return vec3(co*v.x + si*v.y, -si*v.x + co*v.y, v.z); 
+}
+
+float spulse(float val, float s1, float s2, float e1, float e2) {
+    return smoothstep(s1, s2, val)*(1.-smoothstep(e1, e2, val));
 }
 
 void main(void)
@@ -91,7 +99,7 @@ void main(void)
 
     vec3 col = vec3(0.1, 0.04, 0.) + 0.1*rd.y;
 
-    for( int i=0; i<80; i++ )
+    for( int i=0; i<70; i++ )
     {
         vec4 res = vec4(1e20, 0.0, 0.0, 0.0 );
         
@@ -104,7 +112,7 @@ void main(void)
         vec3 u = vec3(-1.+2.*h.x, -.3+.15*h.x, -1.+2.*h.y);
         float k = float(i);
         vec3 u2 = rotateZ(vec3(1., 0., 0.), k*1./80.*6.);
-        u = mix(u, u2, smoothstep(205., 210., beat));
+        u = mix(u, u2, efsel);
         //u.x += 3.*sin(iGlobalTime*0.3);
         u = normalize(u);
         vec3 v = normalize( cross( u, vec3(0.0,1.0,0.0 ) ) );                          
@@ -117,7 +125,8 @@ void main(void)
 			col += shade(pos, tmp, h);//vec3(smoothstep(0., 0.5, tmp.z)*(1.-smoothstep(0.5, 1., tmp.z)));
         //col += vec3(step(0.1, tmp.y)*(1.-step(0.2, tmp.y)));
     }
-    col *=0.8+max(mod(iGlobalTime*4.-1.75,16.)-14.,0.)*1.8;
+    float tmod = mod(beat, 4.);
+    col *=0.8+spulse(tmod, 0., 0.2, .5, .7)*1.8;
 
     gl_FragColor = vec4( col, 1.0 );
 }
