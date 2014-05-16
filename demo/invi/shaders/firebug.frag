@@ -61,7 +61,7 @@ vec3 shade( in vec3 pos, in vec4 res, in vec3 hash )
     float b = spulse(abs(abs(coords.x)-bb*100.), 0., 2., 3., 5.);
     //col = mix(vec3(1., 0.4, 1.), vec3(0., 1., 0.4), coords.y.z-hash.z);
     col = texture2D(iChannel7, vec2(coords.x, coords.y-hash.z)*0.4).xyz;
-    col = mix(vec3(1., 0.5, 0.), vec3(max(beat-210., 0.)*0.05, 0., 1.), col);
+    col = mix(vec3(1., 0.5, 0.), vec3(max(beat-210., 0.)*0.03, 0., .8), col);
     //col += mix(vec3(1.), col, smoothstep(0., 1., blobAm));//1.-vec3(smoothstep(0., 6.5, blobAm));
     col *= 1.-smoothstep(.4, 2.9, abs(coords.y));
     col += 0.1*vec3(0., 0.5, 1.)*b;//*(smoothstep(1.0, 3.2, coords.y)*(1.-smoothstep(3.2, 3.9, coords.y)));
