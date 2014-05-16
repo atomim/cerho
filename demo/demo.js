@@ -239,9 +239,9 @@ var Demo = (function($, assets, glul, utils) {
 		prof.begin("init");
 		if (debugModeEnabled) {
 			setupDebugView("#debugview");
+		}
 			keyListener = new window.keypress.Listener();
             setupHotkeys(keyListener);
-		}
 		
 		gl = glul.initGL(viewportElement);
 
@@ -260,9 +260,11 @@ var Demo = (function($, assets, glul, utils) {
         load(demodata, setupAssets, success);
 	}
 
-	demo.run = function() {
+	demo.run = function(startFrom) {
 		console.log("Running demo");
         transport.play();
+		if (startFrom)
+		  transport.seek(startFrom);
 		demo.update();
 	}
 

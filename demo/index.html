@@ -43,22 +43,41 @@ function viewheight(){
    return window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight||0;
 }
 
-var initialize = function (demodata) {
-	var currLocation = window.location.search;
-	var query = currLocation.split("?")[1];
+function getQueryParams(qs) {
+  qs = qs.split("+").join(" ");
 
+  var params = {}, tokens,
+  re = /[?&]?([^=]+)=([^&]*)/g;
+
+  while (tokens = re.exec(qs)) {
+	params[decodeURIComponent(tokens[1])]
+	= decodeURIComponent(tokens[2]);
+  }
+
+  return params;
+}
+
+var query = getQueryParams(window.location.search.split("?")[1]);
+
+var initialize = function (demodata) {
 	var demo = Demo;
-	if (query && query.search("debug") != -1) {
+	var startAt = 0;
+
+	if (query && query.debug) {
 		demo.setDebugMode(true);
 	}
+
+	if (query.startAt)
+	  var startAt = parseInt(query.startAt, 10);
 
     demo.init(
             $('#viewport').get(0), 
 			"invi",
             demodata,
             function () {
-                demo.run(); 
-            });
+                demo.run(startAt); 
+			}
+			);
 }
 function runDemo(){
 	$( "#links" ).remove();
@@ -97,6 +116,10 @@ $("a.windowed").on('click', function() {
     }
     runDemo();
 });
+
+if (query.type)
+  $("a."+query.type).click();
+
 </script>
 </body>
 </html>
