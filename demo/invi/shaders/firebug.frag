@@ -86,13 +86,13 @@ void main(void)
     p.x *= iResolution.x/iResolution.y;
 
     float fade=max(iGlobalTime-222.,0.)*12.+1.;
-    float liukkari=(beat+0.05)*0.5;
+    float liukkari=(beat+0.05)*0.25;
     vec3 kameraPompottelu= hash(floor(liukkari));
     // ray origin etc.
     vec3 ro = vec3(10., 10., 0.);
-    ro = vec3(-10.*cos(iGlobalTime*3.141*0.25*kameraPompottelu.x)*floor(fade), 5.*sin(kameraPompottelu.y*iGlobalTime*3.141*0.25)*floor(fade), -5.);
+    ro = vec3(-10.*cos(iGlobalTime*3.141*0.25*kameraPompottelu.x)*floor(fade), 5.*sin(kameraPompottelu.y*iGlobalTime*3.141*0.23)*floor(fade), -5.);
     
-    vec3 ta = vec3(0.,0.,0.);
+    vec3 ta = vec3(0.);
     //ta.z += iGlobalTime;
 	//
     vec3 ww = normalize( ta - ro );
