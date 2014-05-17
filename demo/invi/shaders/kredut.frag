@@ -28,10 +28,10 @@ void main() {
 	col.b+=0.1; 
 	uv.y*=.5;
 	vec2 magic=uv*0.5;
-	if(uv.y<(64./1024.) && iGlobalTime<95. && uv.x>0. && uv.x<.498)
+	if(uv.y<(64./1024.) && iGlobalTime<96. && uv.x>0. && uv.x<.498)
 		col *= vec3(1.0)-texture2D(iChannel2, vec2(min(max(uv.x,0.),.5),uv.y)).rgb;
-	else if(magic.y>(60./1024.)*2. && magic.y<(65./1024.)*3. && iGlobalTime<95. && magic.x>0. && magic.x<.47)
-		col *= vec3(1.0)-texture2D(iChannel2, vec2(min(max(magic.x,0.),.5),(64./512.)+magic.y+floor((iGlobalTime-21.)*.5)*(64./1024.))).rgb;
+	else if(magic.y>(60./1024.)*2. && magic.y<(65./1024.)*3. && iGlobalTime<96. && magic.x>0. && magic.x<.47)
+		col *= vec3(1.0)-texture2D(iChannel2, vec2(min(max(magic.x,0.),.5),(64./512.)+magic.y+floor((iGlobalTime-21.)*.5)*(64.0/1024.))).rgb;
 	else
 		col *= vec3(0.0);
 		col+=c.rgb;
