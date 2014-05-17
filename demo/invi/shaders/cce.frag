@@ -32,7 +32,7 @@ void main(void)
 	uv.y += z*4.0;
 	vec3 fade = vec3(1.0, 1.0, 1.0);
 	fade.rgb *= mix(vec3(0.0, 0.0, 0.0), vec3(1.0, 1.0, 1.0), 
-					abs(z))*6.0;
+					abs(z)-abs(length(uv)/((z+1.0)*(z+1.0)))*0.0050)*6.0;
 	;
 	
 	float ind = floor(mod(uv.x*slices, slices));
@@ -51,14 +51,14 @@ void main(void)
 	
 	vec3 sampl = vec3(0.0);
 	
-	for (float i = -2.0; i < 3.0; i+=1.0) {
-		float plus = 1.0 + i*0.000010;
+	for (float i = -2.0; i < 3.0+5.0; i+=1.0) {
+		float plus = 1.0 + i*0.00010;
 		sampl += texture2D(iChannel3, uv + (dir*plus) * ofs).rgb;
 	}
 	
-	sampl.rgb *= (1.0/5.0);
+	sampl.rgb *= (1.0/(5.0+5.0+ind*1.));
 	
-	col.rgb = sampl.rgb * alter * fade;
+	col.rgb = sampl.rgb * alter * fade*(sin(length(uv)+iGlobalTime*3.141)*0.5+0.5);
 	
 	gl_FragColor = vec4(col,1.0);
 }
